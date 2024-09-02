@@ -8,10 +8,10 @@ from openai import OpenAI
 nltk.download("punkt")
 
 # Licensing and setup
-if "040B5B-584193-865E93-356F4A-5CF05F-V3" in os.environ:
-    licensing.activate(os.environ["040B5B-584193-865E93-356F4A-5CF05F-V3"])
+if "THIRDAI" in os.environ:
+    licensing.activate(os.environ["THIRDAI"])
 else:
-    licensing.activate("040B5B-584193-865E93-356F4A-5CF05F-V3")
+    licensing.activate("THIRDAI")
 
 db = ndb.NeuralDB()
 insertable_docs = []
