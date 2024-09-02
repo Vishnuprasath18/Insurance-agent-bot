@@ -8,10 +8,17 @@ from openai import OpenAI
 nltk.download("punkt")
 
 # Licensing and setup
-if "THIRDAI" in os.environ:
-    licensing.activate(os.environ["THIRDAI"])
-else:
-    licensing.activate("THIRDAI")
+load_dotenv()
+
+# Access the keys
+openai_api_key = os.getenv("OPENAI_API_KEY")
+thirdai_license_key = os.getenv("THIRDAI_LICENSE_KEY")
+
+# Now you can use these variables in your code
+if thirdai_license_key:
+    licensing.activate(thirdai_license_key)
+
+openai_client = OpenAI(api_key=openai_api_key)
 
 db = ndb.NeuralDB()
 insertable_docs = []
@@ -22,8 +29,6 @@ for file in doc_files:
     insertable_docs.append(doc)
 db.insert(insertable_docs, train=False)
 
-if "OPENAI_API_KEY" not in os.environ:
-    os.environ["OPENAI_API_KEY"] = ""
 
 openai_client = OpenAI()
 
