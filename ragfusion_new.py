@@ -8,6 +8,10 @@ from openai import OpenAI
 nltk.download("punkt")
 
 # Licensing and setup
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
 load_dotenv()
 
 # Access the keys
@@ -22,7 +26,7 @@ openai_client = OpenAI(api_key=openai_api_key)
 
 db = ndb.NeuralDB()
 insertable_docs = []
-doc_files = ["./data.pdf"]
+doc_files = ["E:\lang and llama\insurance bot\data.pdf"]
 
 for file in doc_files:
     doc = ndb.PDF(file)
