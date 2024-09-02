@@ -15,7 +15,7 @@ else:
 
 db = ndb.NeuralDB()
 insertable_docs = []
-doc_files = [r"C:\Users\addrk\Downloads\indiafirst-life-radiance-smart-investment-plan-brochure.pdf"]
+doc_files = ["./data.pdf"]
 
 for file in doc_files:
     doc = ndb.PDF(file)
